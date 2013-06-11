@@ -1,0 +1,88 @@
+Users
+Roles
+	JR
+		Admin
+		Recruiter
+		User
+	Recruiters
+		Recruiter
+		User
+
+Screeners
+	Creator (user)
+	Questions	
+		"Options":[{"displayValue":"actualValue"}],
+		"DefaultValue":"",
+		"Answers":answer
+		"Properties":{
+				"type":[text|select|radio|checkbox|textarea|date|time|custom]
+				"title":text,					
+		},
+		
+		"Constraints":{
+			{
+			"type":[terminating|condition|dependencies|validation]
+			"requirement":[numeric|email|string|integer]
+			}			
+		}
+		
+		
+		
+<form
+Title for this question: <input type="text" name="title">
+<br />
+Type for this question: <select name="type">
+<option value="radio">18-25</option>
+<option value="text">California</option>
+<option value="select">California</option>
+</select>
+<br />
+
+<select name="constraintType">
+<option value="validation">
+<option value="numeric">
+</select>
+
+</form>
+		
+		
+var screener = EntityLoad('screener', rc.screenerID, true);
+var newQuestion = EntityNew('question');
+newQuestion.setDefaultValue(rc.defaultValue);
+newQuestion.setTitle(rc.title);
+newQuestion.setTpe(rc.type);
+
+var newConstraint = EntityNew('constraint');
+newConstraint.setType('validation');
+newConstraint.setRequirements(['numeric','>3']);
+
+newQuestion.addConstraint(newConstraint);
+
+rc.screener.addQuestion(newquestion);
+EntitySave(rc.screener);
+
+EntitySave(newQuestion);
+
+
+<cfloop array="#rc.screener.questions#" index="question">
+
+<cfif question.type eq 'select'>
+<select name="constraintType">
+<option value="validation">
+<option value="numeric">
+</select>
+</cfif>
+
+<cfif question.type eq 'text'>
+#question.title# <input type="text" name="#question.name#" value="#question.defaultvalue#">
+</cfif>
+
+</cfloop>
+
+
+
+<select name="state">
+<option value="1">18-25</option>
+<option value="2">California</option>
+<option value="ca">California</option>
+</select>
