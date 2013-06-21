@@ -1,21 +1,5 @@
 jQuery(document).ready(function(){
 		
-			// jQuery ready function, anything you want to happen after page is ready goes right below this line
-	
-	//alert('hey');
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
-		
 	$("#loginButton").bind("click", function(e) {
 		
 		var postData = {};
@@ -53,8 +37,16 @@ jQuery(document).ready(function(){
 		$(this).parent().next().val($(this).attr("data-radio-value"));
 	});
 	
+	$("#questionOptions").hide();
 	
-
-	
+	$("#questionType").bind("change", function(){
+		
+		if ($(this).val() == 'select' | $(this).val() == 'checkbox' | $(this).val() == 'radio') {
+		
+			$("#questionOptions").show();
+		
+		}
+		
+		});
 	
 });

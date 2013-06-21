@@ -1,36 +1,27 @@
 <cfoutput>
 
-<form method="POST" action="/admin/users/manage/update/#rc.itemID#">
+<form method="POST" action="/admin/users/manage/update/#rc.itemID#" class="form-horizontal">
 
-<div class="row">
-
-    <div class="column leftColumn">
-    Email:
-    </div>
-    
-    <div class="column middleColumn">
-    </div>
-    
-    <div class="column rightColumn">
+<div class="control-group">
+    <label class="control-label" for="email">Email</label>
+    <div class="controls">
     <input type="text" name="email" id="email" class="field" value="#rc.user.email#" />
     </div>
 
 </div>
 
-<div class="row">
-
-    <div class="column leftColumn">
-    Password:
-    </div>
-    
-    <div class="column middleColumn">
-    </div>
-    
-    <div class="column rightColumn">
+<div class="control-group">
+    <label class="control-label" for="password">Password</label>
+    <div class="controls">
     <input type="password" name="password" id="password" class="field" value="#rc.user.password#" />
-    </div>
 
 </div>
+
+</div>
+
+<div class="control-group">
+    <label class="control-label" for="roles">Roles</label>
+    <div class="controls">
 
 <cfset rc.roles = EntityLoad('role')>
 
@@ -39,38 +30,22 @@
 
 <cfset rc.role = EntityLoad('role', role.roleID)[1]>
 
-<div class="row">
-
-    <div class="column leftColumn">
-    #role.roleName#
-    </div>
-    
-    <div class="column middleColumn">
-    </div>
-    
-    <div class="column rightColumn">
-    <input type="checkbox" name="roles" class="field" value="#role.roleID#" <cfif rc.user.hasRoles(rc.role)>checked="true"</cfif> />
-    </div>
-
-</div>
-
+      <label class="checkbox">
+        <input type="checkbox" name="roles" class="field" value="#role.roleID#" <cfif rc.user.hasRoles(rc.role)>checked="true"</cfif> /> #role.roleName#
+      </label>
+      
 </cfloop>
 </cfoutput>
+</div>
+</div>
 
-<div class="row">
+<div class="control-group">
 
-    <div class="column leftColumn">
-    
-    </div>
-    
-    <div class="column middleColumn">
-    <input type="submit" value="Save" id="saveButton" class="button" />
-    </div>
-    
-    <div class="column rightColumn">
-    
-    </div>
+    <div class="controls">
 
+    <input type="submit" value="Save" id="saveButton" class="btn btn-primary" />
+
+</div>
 </div>
 
 </form>

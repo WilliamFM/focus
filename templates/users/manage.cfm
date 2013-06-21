@@ -21,7 +21,8 @@
 <cfelse>
 
     <div class="hRow">
-    <a class="btn primary" data-controls-modal="newUserForm" data-backdrop="static" data-keyboard="true">new user</a>
+<!---	<a href="##newUserForm" role="button" class="btn btn-small" data-toggle="modal">New User</a>--->
+    	<a href="/admin/users/manage/new" class="btn btn-small">New User</a>
     </div>
     
     <hr>
@@ -31,12 +32,16 @@
                 <cfloop array="#rc.users#" index="user">
                 
                 <div class="hRow">
-                <a href="/admin/users/manage/edit/#user.userID#">#user.email#</a>
+                <a href="/admin/users/manage/edit/#user.userID#" class="btn btn-small"><i class="icon-cog"></i></a> <a href="/admin/users/manage/edit/#user.userID#">#user.email#</a>
                 </div>
                 
                 </cfloop>
               
 	</div>
+    
+<br />
+<br />
+<br />
     
     <div id="newUserForm" class="modal hide">
     
@@ -47,83 +52,53 @@
             <div class="modal-body">
               <p>
               
-                <form method="POST" action="/admin/users/manage/create">
-                
-                <div class="hRow">
-                
-                    <div class="column leftColumn">
-                    Email:
-                    </div>
-                    
-                    <div class="column middleColumn">
-                    </div>
-                    
-                    <div class="column rightColumn">
-                    <input type="text" name="email" id="email" class="field" />
-                    </div>
-                
-                </div>
-                
-                <div class="hRow">
-                
-                    <div class="column leftColumn">
-                    Password:
-                    </div>
-                    
-                    <div class="column middleColumn">
-                    </div>
-                    
-                    <div class="column rightColumn">
-                    <input type="password" name="password" id="password" class="field" />
-                    </div>
-                
-                </div>
-                
-                <cfset rc.roles = EntityLoad('role')>
-                
-                <cfoutput>
-                <cfloop array="#rc.roles#" index="role">
-                
-                <div class="hRow">
-                
-                    <div class="column leftColumn">
-                    #role.roleName#
-                    </div>
-                    
-                    <div class="column middleColumn">
-                    </div>
-                    
-                    <div class="column rightColumn">
-                    <input type="checkbox" name="roles" class="field" value="#role.roleID#" />
-                    </div>
-                
-                </div>
-                
-                </cfloop>
-                </cfoutput>
-                
-                <div class="hRow">
-                
-                    <div class="column leftColumn">
-                    
-                    </div>
-                    
-                    <div class="column middleColumn">
-                    
-                    </div>
-                    
-                    <div class="column rightColumn">
-                    
-                    </div>
-                
-                </div>
-                
-                
-              
-              </p>
+<cfoutput>
+
+<form method="POST" action="/admin/users/manage/create" class="form-horizontal">
+
+<div class="control-group">
+    <label class="control-label" for="email">Email</label>
+    <div class="controls">
+    <input type="text" name="email" id="email" class="field" value="" />
+    </div>
+
+</div>
+
+<div class="control-group">
+    <label class="control-label" for="password">Password</label>
+    <div class="controls">
+    <input type="password" name="password" id="password" class="field" value="" />
+
+</div>
+
+</div>
+
+<div class="control-group">
+    <label class="control-label" for="roles">Roles</label>
+    <div class="controls">
+
+<cfset rc.roles = EntityLoad('role')>
+
+<cfoutput>
+<cfloop array="#rc.roles#" index="role">
+
+<cfset rc.role = EntityLoad('role', role.roleID)[1]>
+
+      <label class="checkbox">
+        <input type="checkbox" name="roles" class="field" value="#role.roleID#" /> #role.roleName#
+      </label>
+      
+</cfloop>
+</cfoutput>
+</div>
+</div>
+
+
+</cfoutput>
+
             </div>
             <div class="modal-footer">
-              <input type="submit" value="Create" id="createButton" class="button btn primary" />
+              <input type="submit" value="Create" id="createButton" class="btn btn-primary" />
               <a href="##" class="btn secondary" onclick="$('##newUserForm').modal('hide');">Cancel</a>
             </div>
 				</form>

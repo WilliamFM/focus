@@ -22,7 +22,14 @@
 	addModuleRoutes(pattern="/forgebox",module="forgebox");
 
 	// Your Application Routes
-	
+
+	addRoute(pattern="/v/:screenerID", handler="screener", action="view");	
+
+	addRoute(pattern="/screener/view/:screenerID", handler="screener", action="view");	
+	addRoute(pattern="/screener/:action/:screenerID", handler="screener");	
+
+	addRoute(pattern="/poll", handler="General", action= { GET = 'poll', POST = 'poll'}, constrain = { handler = '^General'});	
+
 	addRoute(pattern="/testing", handler="Test", action= { GET = 'index', POST = 'index'}, constrain = { handler = '^Main'});
 	addRoute(pattern="/secure", handler="General", action= { GET = 'secure', POST = 'secure'}, constrain = { handler = '^General'});
 	addRoute(pattern="/login", handler="user", action= { GET = 'login', POST = 'login'}, constrain = { handler = '^user'});

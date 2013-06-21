@@ -121,5 +121,10 @@ component{
        
     function index() {
     }
+    
+	function test(event,rc,prc){
+    event.setLayout('Layout.Home');
+    event.setView('test');
+    }
 
 }

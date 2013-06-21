@@ -1,83 +1,101 @@
-<div id="color_container"></div>
-<div id="sidebar"></div>
-
-<cfif security('admin')>
-
 <cfoutput>
-#rc.username#
-<br />
-#rc.key#
+
+                <section id="stats">
+                  <div class="row-fluid">
+                    <div class="span2">
+                        <div class="kpi">#arrayLen(deserializeJSON(rc.serverList.fileContent)['servers'])#</div>
+                        <div><small>total servers</small></div>
+                    </div>
+                  </div>
+                </section>
+
+<section id="tables">
+<div class="sub-header">
+      <h2>Servers</h2>
+    </div>
+                  <table class="table table-striped full-section table-hover">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Status</th>
+                        <th>Create Date</th>
+                        <th>RAM</th>
+                        <th>IP</th>
+                        <th>Region</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+<cfloop array="#deserializeJSON(rc.serverList.fileContent)['servers']#" index="item">
+
+<cfhttp url="#rc.serverAPI#/flavors/#item.flavor.id#" method="GET" result="rc.flavorResult">
+    <cfhttpparam name="Content-Type" type="header" value="application/json">
+    <cfhttpparam name="X-Auth-Token" type="header" value="#rc.authtoken#">
+</cfhttp>
+
+<cfset rc.flavor = deserializeJSON(rc.flavorResult.FileContent)>
+
+                      <tr>
+                        <td class="primary"><p>#item.name#</p></td>
+                        <td>#item.id#</td>
+                        <td>
+                            <div class="progress progress-mini">
+                              <div class="bar" style="width: #item.progress#%"></div>
+                            </div>
+                          <label class="tiny">#item.status# #item.progress#%</label>
+                        </td>
+                        <td>#dateFormat(item.created, "mm/dd/yy")# #timeFormat(item.created, "hh:mm ss tt")#</td>
+                        <td>#rc.flavor.flavor.ram#MB</td>
+                        <td><cftry><cfloop array="#item.addresses.public#" index="address"><cfif address.version eq 4>#address.addr#</cfif></cfloop><br /><cfloop array="#item.addresses.private#" index="address"><cfif address.version eq 4>#address.addr#</cfif></cfloop><cfcatch type="any">unassigned</cfcatch></cftry></td>
+						<td>#rc.endpoint.region#</td>
+                        <td><!---<a href="/server/clone/server/#item.id#" class="btn btn-inverse btn-mini"><i class="icon-plus-sign icon-white"></i> clone</a>---></td>
+                      </tr>
+</cfloop>
+
+                    </tbody>
+                  </table>
+  </section>
+
 </cfoutput>
 
-<hr />
-
-<a href="/admin/users/manage" class="btn btn-primary"><i class="icon-lock icon-white"></i> Manage Users</a>
-<br />
-<br />
-<a href="#/credentials/add" class="btn btn-primary"><i class="icon-lock icon-white"></i> API Credentials</a>
-<br />
-<br />
-<a href="#/server/add" class="btn btn-primary" disabled><i class="icon-plus icon-white"></i> Add New Server</a>
-
-<cfelse>
-
-<script type="text/template" id="color_template">
-<form class="form-horizontal">
-	<label>Backbone.js example:</label>
-	<input type="text" id="color_input" />
-	<input type="button" id="color_button" value="Change Color" class="btn" />
-</form>
-</script>
 
 <script type="text/javascript">
-	
-$(function() {
-	
-	var Sidebar = Backbone.Model.extend({
-	  promptColor: function() {
-		var cssColor = prompt("Please enter a CSS color:");
-		this.set({color: cssColor});
-	  }
-	});
-	
-	window.sidebar = new Sidebar;
-	
-	sidebar.on('change:color', function(model, color) {
-	  $('#sidebar').css({background: color});
-	});
-	
-	sidebar.set({color: 'white'});	
-	
-	var ItemView = Backbone.View.extend({
-	
-		el: '#sidebar',
-		
-		model: sidebar,
-		
-		initialize : function(options) {
-			this.render = _.bind(this.render, this); 
-			this.model.bind('change:color', this.render);
-		},
-		
-		events: {
-			"click input[type=button]": "docolor"
-		},
-		
-		render: function(){
-			var template = _.template( $("#color_template").html(), {} );
-			$(this.el).html( template );
-		},
-		
-		docolor: function( event ){
-			sidebar.set({color: $("#color_input").val()});
-		}
-		
-	});
 
-var item = new ItemView().render();
+pollUpdate = true;
+
+$(document).ready(function(){
+
+update();
 	
 });
 
-</script>
+function update(){
+    
+		var postData = {};
+	
+		postData.returnFormat = 'plain';
+				
+		$.ajax({
+			url: '/rest/poll',
+			method: 'POST',
+			data: postData,
+			dataType: 'text',
+			success: function(data){
+				$("#mainBody").html(data);
+				
+				if (pollUpdate==true) {
+				setTimeout(function(){update();}, 10000);
+				} else {
 
-</cfif>
+				}
+
+			},
+			error: function(data){
+				return false;
+			}
+		});
+		
+}
+</script>

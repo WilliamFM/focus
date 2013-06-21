@@ -78,7 +78,7 @@
 <!------------------------------------------- PUBLIC EVENTS ------------------------------------------>
 
 	<!--- Default Action --->
-	<cffunction name="index" returntype="void" output="false" hint="My main event">
+	<cffunction name="index" returntype="any" output="false" hint="My main event">
 		<cfargument name="event" required="true">
 		<cfset var rc = event.getCollection()>
 
@@ -96,9 +96,66 @@
                 <cfset rc.username = #deserializeJSON(local.rackspace.FileContent).username#>
         </cfoutput>
         
+<cfhttp url="http://localhost:5985/config/rackspace" result="rc.credentials"></cfhttp>
+<cfset rc.key = #trim(deserializeJSON(rc.credentials.FileContent).key)#>
+<cfset rc.username = #trim(deserializeJSON(rc.credentials.FileContent).username)#>
+
+<cfoutput>
+<cfsavecontent variable="rc.body">{"auth":{"RAX-KSKEY:apiKeyCredentials":{"username":"#rc.username#", "apiKey":"#rc.key#"}}}</cfsavecontent>
+</cfoutput>
+
+<cfhttp url="https://identity.api.rackspacecloud.com/v2.0/tokens" method="POST" result="rc.token">
+<cfhttpparam name="Content-Type" type="header" value="application/json">
+<cfhttpparam type="body" value="#rc.body#">
+</cfhttp>
+
+<cfset rc.result="#deserializeJSON(rc.token.filecontent)#">
+
+
+
+<cfloop array="#rc.result["access"]["serviceCatalog"]#" index="local.item">
+
+<cfif local.item.name eq 'cloudServersOpenStack'>
+
+<cfset rc.serverEndpoint = local.item>
+
+<cfloop collection="#rc.serverEndpoint.endpoints#" item="local.index">
+
+<cfset local.item = rc.serverEndpoint.endpoints[local.index]>
+
+<cfif local.item.region eq 'DFW'>
+<cfset rc.endpoint = local.item>
+</cfif>
+</cfloop>
+
+</cfif>
+
+</cfloop>
+
+<cfoutput>
+
+<cfset rc.authtoken = rc.result.access.token.id>
+<cfset rc.accountID = rc.result.access.user.id>
+
+<cfset rc.serverAPI = replaceNoCase(rc.endpoint.publicURL, 'ord', 'dfw')>
+
+<cfhttp url="#rc.serverAPI#/servers/detail" method="GET" result="rc.serverList">
+    <cfhttpparam name="Content-Type" type="header" value="application/json">
+    <cfhttpparam name="X-Auth-Token" type="header" value="#rc.authtoken#">
+</cfhttp>
+
+</cfoutput>
+
+        
         <cfif isDefined("session.User")>
-	        <cfset event.setLayout("Layout.Home")>
-			<cfset event.setView("home")>
+
+        <cfif isDefined("rc.noLayout")>
+	    <cfset event.setView(view="home",noLayout=true)>
+        <cfelse>
+	    <cfset event.setLayout("Layout.Home")>
+	    <cfset event.setView("home")>
+        </cfif>
+
         <cfelse>
 	        <cfset event.setLayout("Layout.Main")>
 			<cfset event.setView("login")>
@@ -139,6 +196,91 @@
 	</cffunction>
 
 <!------------------------------------------- PRIVATE EVENTS ------------------------------------------>
+
+
+	<cffunction name="poll" returntype="any" output="false" hint="My main event">
+		<cfargument name="event" required="true">
+		<cfset var rc = event.getCollection()>
+       
+        <cfhttp url="http://localhost:5985/config/rackspace" result="local.rackspace"></cfhttp>
+        <cfoutput>
+                <cfset rc.key = #deserializeJSON(local.rackspace.FileContent).key#>
+                <cfset rc.username = #deserializeJSON(local.rackspace.FileContent).username#>
+        </cfoutput>
+        
+<cfhttp url="http://localhost:5985/config/rackspace" result="rc.credentials"></cfhttp>
+<cfset rc.key = #trim(deserializeJSON(rc.credentials.FileContent).key)#>
+<cfset rc.username = #trim(deserializeJSON(rc.credentials.FileContent).username)#>
+
+<cfoutput>
+<cfsavecontent variable="rc.body">{"auth":{"RAX-KSKEY:apiKeyCredentials":{"username":"#rc.username#", "apiKey":"#rc.key#"}}}</cfsavecontent>
+</cfoutput>
+
+<cfhttp url="https://identity.api.rackspacecloud.com/v2.0/tokens" method="POST" result="rc.token">
+<cfhttpparam name="Content-Type" type="header" value="application/json">
+<cfhttpparam type="body" value="#rc.body#">
+</cfhttp>
+
+<cfset rc.result="#deserializeJSON(rc.token.filecontent)#">
+
+<cfloop array="#rc.result["access"]["serviceCatalog"]#" index="local.item">
+
+<cfif local.item.name eq 'cloudServersOpenStack'>
+
+<cfset rc.serverEndpoint = local.item>
+
+<cfloop collection="#rc.serverEndpoint.endpoints#" item="local.index">
+
+<cfset local.item = rc.serverEndpoint.endpoints[local.index]>
+
+<cfif local.item.region eq 'DFW'>
+<cfset rc.endpoint = local.item>
+</cfif>
+</cfloop>
+
+</cfif>
+
+</cfloop>
+
+<cfoutput>
+
+<cfset rc.authtoken = rc.result.access.token.id>
+<cfset rc.accountID = rc.result.access.user.id>
+
+<cfset rc.serverAPI = replaceNoCase(rc.endpoint.publicURL, 'ord', 'dfw')>
+
+<cfhttp url="#rc.serverAPI#/servers/detail" method="GET" result="rc.serverList">
+    <cfhttpparam name="Content-Type" type="header" value="application/json">
+    <cfhttpparam name="X-Auth-Token" type="header" value="#rc.authtoken#">
+</cfhttp>
+
+    <cfhttp url="http://localhost:5985/config/scheduled" result="rc.getSchedule"></cfhttp>
+
+	<cfset rc.record = deserializeJSON(rc.getSchedule.FileContent)>
+
+</cfoutput>
+
+<cfoutput>
+
+
+
+</cfoutput>
+        
+        <cfif isDefined("session.User")>
+
+	    <cfset event.setView(view="update",noLayout=true)>
+
+        <cfif event.isProxyRequest()>
+	    <cfset event.setView(view="update",noLayout=true)>
+        <cfreturn renderView(view="update",noLayout=true)>
+        </cfif>
+
+        <cfelse>
+	        <cfset event.setLayout("Layout.Main")>
+			<cfset event.setView("login")>
+        </cfif>
+        
+	</cffunction>
 
 
 </cfcomponent>

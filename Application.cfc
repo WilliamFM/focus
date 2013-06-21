@@ -63,6 +63,7 @@ Description :
         <cfsetting showdebugoutput="no">
         
 		<cfset reloadChecks()>
+        <cfset ormReload()>
 		
 		<!--- Process A ColdBox Request Only --->
 		<cfif findNoCase('index.cfm', listLast(arguments.targetPage, '/'))>

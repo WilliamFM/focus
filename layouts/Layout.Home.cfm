@@ -1,220 +1,141 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en" ng-app>
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
-    <title>grapestack.com Dashboard</title>
+    <title>focusjr.com Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- CSS -->
-    <link href="/includes/assets/css/bootstrap.css" rel="stylesheet">
-
-	<link rel="stylesheet" href="/includes/styles/main.css" id="mainCSS" />
-
-    <style type="text/css">
-
-      /* Sticky footer styles
-      -------------------------------------------------- */
-
-      html,
-      body {
-        height: 100%;
-        /* The html and body elements cannot have any padding or margin. */
-      }
-
-      /* Wrapper for page content to push down footer */
-      #wrap {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        /* Negative indent footer by it's height */
-        margin: 0 auto -60px;
-      }
-
-      /* Set the fixed height of the footer here */
-      #push,
-      #footer {
-        height: 60px;
-      }
-      #footer {
-        background-color: #4f2d54;
-      }
-
-      /* Lastly, apply responsive CSS fixes as necessary */
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
-
-
-
-      /* Custom page CSS
-      -------------------------------------------------- */
-      /* Not required for template or sticky footer method. */
-
-      #wrap > .container {
-        padding-top: 60px;
-      }
-      .container .credit {
-        margin: 20px 0;
-      }
-
-      code {
-        font-size: 80%;
-      }
-
-	.modal-body-tall {
-		height: 370px;
-	}
-
-	.typeahead {
-		max-height: 260px;
-		max-width: 220px;
-		left: 10px !important;
-		top: 0px !important;
-		overflow-x: hidden;
-		display: none;
-		position: relative;
-	}
-	
-	#myModalBody {
-
-	}
-
-	#recipients {
-		margin-left: 10px;
-		margin-bottom: 0px;
-	}
-	
-	#newFolder {
-		left: 10px;
-		top: 10px;
-		position: relative;
-		display: none;
-	}
-	
-	#createNewFolder {
-		left: 3px;
-		top: 10px;
-		position: relative;
-	}
-	
-	#recipientsMiddle {
-		margin-top: 15px !important;
-	}
-	
-	#recipientsLeft {
-		margin-top: 15px !important;
-		padding-left: 10px;
-	}
-	
-	.removeRecipient, .removeNew {
-		cursor: pointer;
-	}
-	
-	body .modal {
-    /* new custom width */
-    width: 800px;
-    /* must be half of the width, minus scrollbar on the left (30px) */
-    margin-left: -400px;
-	}
-	
-	#sendRecipients {
-		max-height: 200px;
-		max-width: 200px;
-		overflow-x: hidden;
-		overflow-y: auto;
-		top: 40px !important;
-		position: relative;
-		white-space:nowrap;
-	}
-	
-	#recipientHolderText {
-		white-space: normal;
-	}	
-	
-    </style>
-    <link href="/includes/assets/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-      <script src="/includes/assets/js/html5shiv.js"></script>
+      <script src="/includes/dashboard/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/includes/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/includes/assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/includes/assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="/includes/assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="/includes/assets/ico/favicon.png">
-  </head>
+    <link href="/includes/dashboard/inspiritas.css" rel="stylesheet">
+    <link href="/includes/styles/main.css" rel="stylesheet">
+    
+<style type="text/css">
 
-  <body>
+.avatar {
+	width: 40px;
+	height: 40px;
+}
 
+.contentBlock {
+	padding: 10px;
+}
 
-    <!-- Part 1: Wrap all page content here -->
-    <div id="wrap">
+</style>
+    
+</head>
 
-      <!-- Fixed navbar -->
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="#">grapestack.com</a>
-            <div class="nav-collapse collapse">
-              <ul class="nav">			  
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog icon-white"></i> <cfoutput>#session.User.email#</cfoutput> <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="/logout"><i class="icon-off"></i> Logout</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div>
+<body>
+
+<!-- Navbar
+  ================================================== -->
+<div class="navbar navbar-static-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <a class="brand" href="#">focusjr.com</a>
+      <span class="tagline">Generic Rapid Application Programming Environment <a href="http://github.com/grapestack/grapestack/" target="_github">Read more.</a></span>
+
+      <div class="nav-collapse collapse" id="main-menu">
+        <div class="auth pull-right">
+            <img class="avatar" src="/includes/dashboard/images/avatar.png">
+            <span class="name">GRAPE Stack</span><br/>
+            <span class="links">
+                <a href="#">Customize</a>
+            </span>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
-      <!-- Begin page content -->
-      <div class="container">
-        <div class="page-header">
-          <h1><cfif security('admin')>Managing GRAPE Stack for grapestack.com<cfelse>Using grapestack.com as <cfoutput>#session.User.email#</cfoutput></cfif></h1>
+<div class="container">
+    <div class="row-fluid">
+        <div class="span3">
+            <aside>
+                <nav>
+                    <ul class="nav">
+                      <li class="selected">
+                        <a href="/"><i class="icon-play"></i> Dashboard</a>
+                      </li>
+
+<li class="optionsMenu">
+<a href="/screener/list"><i class="icon-user icon-white"></i> Manage Screeners</a>
+</li>
+
+<li class="optionsMenu">
+<a href="/admin/users/manage"><i class="icon-user icon-white"></i> Manage Users</a>
+</li>
+<li class="optionsMenu">
+<a href="#/credentials/add"><i class="icon-lock icon-white"></i> API Credentials</a>
+</li>
+<li class="optionsMenu">
+<a href="/server/add" disabled><i class="icon-plus icon-white"></i> Add New Server</a>
+</li>
+<!---
+<li class="optionsMenu">
+<a href="#/domain/add"><i class="icon-plus icon-white"></i> Add New Domain</a>
+</li>
+--->
+
+                    </ul>
+                </nav>
+            </aside>
         </div>
-        <p class="lead">
-		<script src="/includes/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="/includes/javascript/underscore-min.js"></script>
-        <script type="text/javascript" src="/includes/javascript/backbone-min.js"></script>
-        <cfoutput>#renderView()#</cfoutput>
-        </p>
-	  </div>
-	  <div id="push"></div>
-      </div>
+        <div class="span9" id="content-wrapper">
+            <div id="content">
+
+             <section id="stats">
+                  <header>
+                    <div class="pull-right">
+                        <a class="btn btn-small" href="/logout">Log Out</a>
+                    </div>
+                    <h1><cfif security('admin')>Managing GRAPE Stack for focusjr.com<cfelse>Using focusjr.com as <cfoutput>#session.User.email#</cfoutput></cfif></h1>
+                  </header>
+             </section>
+
+    <script src="/includes/assets/js/jquery.js"></script>
+
+<cfif event.getCurrentEvent() is not 'General.index'>
+<div id="mainBody">
+<cfelse>
+<div>
+</cfif>
+<cfoutput>#renderView()#</cfoutput>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="push"></div>
+
+</div><!-- /container -->
 
     <div id="footer">
       <div class="container">
-        <p class="muted credit">&copy; <cfoutput>#dateFormat(now(), "yyyy")#</cfoutput> grapestack.com</p>
+        <p class="muted credit">&copy; <cfoutput>#dateFormat(now(), "yyyy")#</cfoutput> focusjr.com</p>
       </div>
     </div>
-
-
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/includes/assets/js/bootstrap.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-	<script type="text/javascript" src="/includes/javascript/main.js"></script>
-    
-</body>
+    <script src="/includes/dashboard/js/highcharts.js"></script>
+    <script src="/includes/dashboard/js/inspiritas.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="/includes/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/includes/javascript/main.js"></script>
+
+  </body>
 </html>

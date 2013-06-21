@@ -172,7 +172,7 @@ logBoxConfig = "coldbox.system.cache.config.LogBox",
 				couchDB = {
 					class="appenders.couchDB",
 					properties = {
-						host = "couchdb.grapestack.com", database="logbox", port="5984"
+						host = "couchdb.focusjr.com", database="logbox", port="5984"
 					}
 				}
 			},
@@ -188,7 +188,7 @@ logBoxConfig = "coldbox.system.cache.config.LogBox",
 		
 		//Layout Settings
 		layoutSettings = {
-			defaultLayout = "Layout.Main.cfm",
+			defaultLayout = "Layout.Home.cfm",
 			defaultView   = ""
 		};
 		

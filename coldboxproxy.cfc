@@ -83,6 +83,8 @@ getInterceptor("SES").onRequestCapture(event,id);
    
 <cfif NOT isDefined("returnFormat")>
       <cfreturn serializeJSON(results)>
+<cfelseif isDefined("returnFormat") and returnFormat is 'plain'>
+	<cfreturn results>
 <cfelseif isDefined("returnFormat") and returnFormat is not 'json' and NOT isDefined("arguments.callback")>
 	<cfreturn serializeJSON(results)>
 <cfelse>
