@@ -1,0 +1,20 @@
+screener
+	responses one to many
+	question one to many
+
+responses
+	screeners many to one
+	answers one to many
+
+answers
+	responses many to one
+	question many to one
+	value
+
+questions
+	answers one to many
+	screener many to one
+	options one to many
+
+options
+	question many to one
