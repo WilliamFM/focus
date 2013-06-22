@@ -20,7 +20,7 @@
 					<div class="alert adjusted alert-info">
 						<button class="close" data-dismiss="alert">×</button>
 						<i class="cus-exclamation"></i>
-						<strong>Welcome to {Jarvis} Admin</strong> Please don't forget to check out all the pages and the features.
+						<strong>Welcome to FocusJr Admin</strong>
 					</div>
 					
 					<div class="fluid-container">
@@ -29,27 +29,27 @@
 						<div id="start">
 							<ul>
 								<li>
-									<label>+548 </label>
+									<label>3 </label>
 									<a href="javascript:void(0)" title="">
 										<img src="/includes/jarvis/img/start-icons/add-user.png" alt="">
 										<span>Add New User</span>
 									</a>
 								</li>
 								<li>
-									<label>246 </label>
+									<label>+246 </label>
 									<a href="javascript:void(0)" title="">
 										<img src="/includes/jarvis/img/start-icons/orders.png" alt="">
-										<span>View Orders</span>
+										<span>View Candidates</span>
 									</a>
 								</li>
 								<li>
 									<a href="javascript:void(0)" title="">
 										<img src="/includes/jarvis/img/start-icons/mass.png" alt="">
-										<span>Broadcast</span>
+										<span>Monitor Campaigns</span>
 									</a>
 								</li>
 								<li>
-									<label>new</label>
+									<label>updated</label>
 									<a href="javascript:void(0)" title="">
 										<img src="/includes/jarvis/img/start-icons/stats.png" alt="">
 										<span>Show Statistics</span>
@@ -59,13 +59,13 @@
 									<label>657</label>
 									<a href="javascript:void(0)" title="">
 										<img src="/includes/jarvis/img/start-icons/pending-message.png" alt="">
-										<span>Comments</span>
+										<span>Responses</span>
 									</a>
 								</li>
 								<li>
 									<a href="javascript:void(0)" title="">
 										<img src="/includes/jarvis/img/start-icons/upgrade.png" alt="">
-										<span>Service Upgrade</span>
+										<span>Help</span>
 									</a>
 								</li>
 							</ul>
