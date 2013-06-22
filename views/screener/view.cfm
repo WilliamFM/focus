@@ -4,9 +4,9 @@
 
 <cfloop array="#rc.questions#" index="question">
 
-<cfif listFindNoCase('select', question.questionType)>
+<div class="row-fluid question">
 
-<div class="row-fluid">
+<cfif listFindNoCase('select', question.questionType)>
 
 <div class="span6">
 #question.questionLabel#
@@ -23,11 +23,11 @@
 
       </select>
     </div>
-  </div>
+
 
 <cfelseif listFindNoCase('radio', question.questionType)>
 
-<div class="row-fluid">
+
 
 <div class="span6">
 #question.questionLabel#
@@ -40,11 +40,9 @@
         </cfloop>
 </div>
 
-  </div>
+
 
 <cfelseif listFindNoCase('checkbox', question.questionType)>
-
-<div class="row-fluid">
 
 <div class="span6">
 #question.questionLabel#
@@ -57,11 +55,7 @@
         </cfloop>
 </div>
 
-  </div>
-
 <cfelse>
-
-<div class="row-fluid">
 
 <div class="span6">
 #question.questionLabel#
@@ -72,15 +66,16 @@
       <input type="text" name="question#question.questionUUID#" id="question#question.questionUUID#" placeholder="Question Label">
 </div>
 
-  </div>
-
 </cfif>
+
+</div>
 
 </cfloop>
 
 
-
+<div class="row-fluid question">
       <button type="submit" class="btn">Submit Response</button>
+</div>
 
 
   <input type="hidden" name="screenerID" value="#rc.screenerID#" />
