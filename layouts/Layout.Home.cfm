@@ -282,13 +282,13 @@
 								</ul>
 							</li>
 							<li class="">
-								<a href="javascript:void(0)"><i class="icon-user"></i>Users<span class="badge">3</span></a>
+								<a href="javascript:void(0)"><i class="icon-user"></i>Users<span class="badge">1</span></a>
 								<ul>
 									<li>
-										<a href="#">Manage</a>
+										<a href="/admin/users/manage">Manage</a>
 									</li>
 									<li>
-										<a href="#">Add New</a>
+										<a href="/admin/users/manage/new">Add New</a>
 									</li>
 								</ul>
 							</li>
