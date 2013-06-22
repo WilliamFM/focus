@@ -23,6 +23,8 @@
 
 	// Your Application Routes
 
+	addRoute(pattern="/response/:action/:responseID", handler="response");	
+
 	addRoute(pattern="/v/:screenerID", handler="screener", action="view");	
 
 	addRoute(pattern="/screener/view/:screenerID", handler="screener", action="view");	

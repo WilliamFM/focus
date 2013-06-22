@@ -30,7 +30,7 @@ Description :
         dbcreate = "update", // This value drops the table if it exists and then creates it 
         logSQL = true, // SQL queries are logged to the console 
         cfclocation = "models",
-		dialect = "MySQL"
+		dialect = "MySQLWithInnoDB"
     }; 
 	
 	</cfscript>

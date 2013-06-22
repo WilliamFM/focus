@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping><!--
 source:C:\server\sites\focusjr.com\ROOT\models\user.cfc
-compilation-time:{ts '2013-06-22 04:26:39'}
+compilation-time:{ts '2013-06-22 05:04:44'}
 --><class entity-name="user" lazy="true" node="models.user" table="users"><id name="userid" type="integer"><column name="userid"/><generator class="native"/></id><property name="username" type="string"><column name="username"/></property><property name="email" type="string"><column name="email"/></property><property name="userUUID" type="string"><column name="userUUID"/></property><property name="facebookToken" type="string"><column name="facebookToken"/></property><property name="password" type="string"><column name="password"/></property><property name="facebookID" type="long"><column name="facebookID"/></property><property name="displayName" type="string"><column name="displayName"/></property><bag cascade="all" lazy="true" name="roles" table="userroles"><key column="userID"/><many-to-many column="roleID" entity-name="role"/></bag></class></hibernate-mapping>

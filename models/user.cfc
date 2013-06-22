@@ -13,6 +13,5 @@ table="users"
     property name="password" ormtype="string";
     property name="facebookID" ormtype="long";
     property name="facebookToken" ormtype="string";
-	property name="roles" fieldtype="many-to-many" fkcolumn="userID" cfc="role" linktable="userroles" inversejoincolumn="roleID" lazy="true" cascade="all";
-    
+	property name="roles" fieldtype="many-to-many" fkcolumn="userID" cfc="role" linktable="userroles" inversejoincolumn="roleID" lazy="true" cascade="all";    
 }

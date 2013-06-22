@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping><!--
 source:C:\server\sites\focusjr.com\ROOT\models\role.cfc
-compilation-time:{ts '2013-06-22 04:26:39'}
+compilation-time:{ts '2013-06-22 05:04:44'}
 --><class entity-name="role" lazy="true" node="models.role" table="roles"><id name="roleid" type="double"><column name="roleid"/><generator class="native"/></id><property name="rolename" type="string"><column name="rolename"/></property></class></hibernate-mapping>
