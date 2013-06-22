@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping><!--
 source:C:\server\sites\focusjr.com\ROOT\models\screener.cfc
-compilation-time:{ts '2013-06-20 21:53:11'}
+compilation-time:{ts '2013-06-22 04:26:39'}
 --><class entity-name="screener" lazy="true" node="models.screener" table="screeners"><id name="screenerid" type="integer"><column name="screenerid"/><generator class="native"/></id><property name="screenerUUID" type="string"><column name="screenerUUID"/></property><property name="screenerName" type="string"><column name="screenerName"/></property><bag inverse="true" lazy="true" name="questions"><key column="screenerID"/><one-to-many entity-name="question"/></bag></class></hibernate-mapping>

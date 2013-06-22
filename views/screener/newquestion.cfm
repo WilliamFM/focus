@@ -26,28 +26,26 @@ Screener: <strong>#rc.screener.screenerName#</strong>
     </div>
   </div>
   
-  <div class="control-group" id="questionOptions">
+  <div class="control-group" id="questionOptions" name=">
     <label class="control-label" for="questionType">Options</label>
     <div class="controls">
-      <input name="option1" />
-      <br />
-      <input name="option2" />
-      <br />
-      <input name="option3" />
-      <br />
-      <input name="option4" />
-      <br />
-      <input name="option5" />
+    
+    <a href="##" class="btn btn-success" id="addOption"><i class="icon icon-plus icon-white"></i> Add Option</a>
+    
+    <div id="options">
+    </div>
+    
     </div>
   </div>
 
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn">Create Question</button>
+      <button type="submit" class="btn btn-success">Create Question</button>
     </div>
   </div>
 
   <input type="hidden" name="screenerID" value="#rc.screenerID#" />
+  <input type="hidden" name="optionCount" id="optionCount" value="0" />
   
 </form>
 

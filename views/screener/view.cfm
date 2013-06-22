@@ -1,6 +1,6 @@
 <cfoutput>
 
-<form class="form-horizontal" method="POST" action="/screener/saverespnose">
+<form class="form-horizontal" method="POST" action="/screener/saveresponse">
 
 <cfloop array="#rc.questions#" index="question">
 
@@ -37,6 +37,23 @@
 <div class="span6">
 		<cfloop array="#question.options#" index="option">
         <input type="radio" value="#option.optionValue#" name="question#question.questionUUID#" id="question#question.questionUUID#" > #option.optionLabel#<br  />       
+        </cfloop>
+</div>
+
+  </div>
+
+<cfelseif listFindNoCase('checkbox', question.questionType)>
+
+<div class="row-fluid">
+
+<div class="span6">
+#question.questionLabel#
+</div>
+
+
+<div class="span6">
+		<cfloop array="#question.options#" index="option">
+        <input type="checkbox" value="#option.optionValue#" name="question#question.questionUUID#" id="question#question.questionUUID#" > #option.optionLabel#<br  />       
         </cfloop>
 </div>
 

@@ -35,6 +35,10 @@ component{
             	//setNextEvent(uri='/');
 				event.setView("home");
                 event.setLayout("Layout.FacebookAuth");
+            } else if (NOT Event.isProxyRequest()) {
+            
+				setNextEvent(uri='/');
+            
             }
 
         } else {

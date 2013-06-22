@@ -48,5 +48,20 @@ jQuery(document).ready(function(){
 		}
 		
 		});
+		
+	$("#addOption").bind("click", function(){
+		
+		var optionCount = parseInt($("#optionCount").val())+1;	
+		
+		var newOption = $('<div>');
+		newOption.addClass('questionOption');
+		
+		newOption.html('<input type="text" name="option'+optionCount+'" class="option">'+'<input type="text" name="optionLabel'+optionCount+'" class="optionLabel">');
+		
+		$("#options").append(newOption);
+		
+		$("#optionCount").val(optionCount)
+		
+		});
 	
 });

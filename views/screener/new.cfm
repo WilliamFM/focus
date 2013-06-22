@@ -10,7 +10,7 @@
 
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn">Create Screener</button>
+      <button type="submit" class="btn btn-success">Create Screener</button>
     </div>
   </div>
 </form>

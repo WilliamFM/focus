@@ -22,8 +22,17 @@ component{
         
     	rc.questions = ORMExecuteQuery("from question where screenerID = '#rc.screener.getScreenerID()#'");   
     
-        event.setLayout('Layout.Screener');
+        event.setLayout('Layout.Jarvis');
         event.setView('screener/view');
+
+    }
+    
+	function viewresponses(event,rc,prc){
+    
+    	rc.screener = ORMExecuteQuery("from screener where screenerUUID = '#rc.screenerID#'", true);          
+    
+        event.setLayout('Layout.Jarvis');
+        event.setView('screener/viewresponses');
 
     }
     
@@ -61,11 +70,11 @@ component{
         
         if (listFindNoCase('select,radio,checkbox', rc.questionType)) {
         
-        for (i=0;i<5;i++) {
+        for (i=0;i<rc.optionCount;i++) {
 
 			if (rc['option#i+1#'] != '') {
             	rc.newOption = EntityNew('option');
-                rc.newOption.setOptionLabel(rc['option#i+1#']);
+                rc.newOption.setOptionLabel(rc['optionLabel#i+1#']);
                 rc.newOption.setOptionValue(rc['option#i+1#']);
                 rc.newOption.setQuestion(rc.newQuestion);
                 rc.newQuestion.addOption(rc.newOption);
@@ -96,4 +105,47 @@ component{
 
     }
 
+	function saveresponse(event,rc,prc){
+    
+    	rc.screener = ORMExecuteQuery("from screener where screenerUUID = '#rc.screenerID#'", true);   
+        
+		rc.newResponse = EntityNew('response');
+        rc.newResponse.setScreener(rc.screener);
+        rc.newResponse.setResponseUUID(createUUID());
+        rc.screener.addResponse(rc.newResponse);
+    
+    	rc.questions = ORMExecuteQuery("from question where screenerID = '#rc.screener.getScreenerID()#'");
+
+		for (rc.question in rc.questions) {
+        
+		rc.fieldName = "question#rc.question.questionUUID#";
+        
+        if (isDefined("rc['#rc.fieldName#']")) {
+                
+        	rc.newAnswer = EntityNew('answer');
+            rc.newAnswer.setQuestion(rc.question);
+            rc.newAnswer.setAnswerValue(rc[rc.fieldName]);
+            rc.newAnswer.setResponse(rc.newResponse);
+            rc.newResponse.addAnswer(rc.newAnswer);
+            EntitySave(rc.newAnswer);
+        
+        }
+
+        }
+       
+        EntitySave(rc.newResponse); 
+        EntitySave(rc.screener);               
+            
+        setNextEvent(event='screener/response',persist='screenerID');
+
+    }
+
+	function response(event,rc,prc){
+    
+    	rc.screener = ORMExecuteQuery("from screener where screenerUUID = '#rc.screenerID#'", true);   
+    
+        event.setLayout('Layout.Home');
+
+    }
+    
 }
