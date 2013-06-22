@@ -36,7 +36,9 @@
 
 <div class="span6">
 		<cfloop array="#question.options#" index="option">
+		<label class="radio">
         <input type="radio" value="#option.optionValue#" name="question#question.questionUUID#" id="question#question.questionUUID#" > #option.optionLabel#<br  />       
+		</label>
         </cfloop>
 </div>
 
@@ -51,7 +53,9 @@
 
 <div class="span6">
 		<cfloop array="#question.options#" index="option">
+		<label class="checkbox">
         <input type="checkbox" value="#option.optionValue#" name="question#question.questionUUID#" id="question#question.questionUUID#" > #option.optionLabel#<br  />       
+		</label>
         </cfloop>
 </div>
 
@@ -74,7 +78,7 @@
 
 
 <div class="row-fluid question">
-      <button type="submit" class="btn">Submit Response</button>
+      <button type="submit" class="btn btn-success">Submit Response</button>
 </div>
 
 
