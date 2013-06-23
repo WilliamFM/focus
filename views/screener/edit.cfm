@@ -18,22 +18,22 @@
 
 <section id="widget-grid">
 
-<div class="jarviswidget" id="widget-id-1">
+<div class="jarviswidget" id="widget-id-0">
+
 									    <header>
 									        <h2>Questions</h2>                           
 									    </header>
-									    
-									    <!-- widget div-->
+									    <!-- wrap div -->
 									    <div>
-                                                                                
-									    	<!-- widget edit box -->
+									    
 									        <div class="jarviswidget-editbox">
+
 									        </div>
             
 									        <div class="inner-spacer"> 
 	
 
-<table class="table table-bordered table-striped responsive" id="s-table">
+												<table class="table table-striped table-bordered responsive" id="dtable">
 														<thead>
 															<tr>
 																<th>Question</th>

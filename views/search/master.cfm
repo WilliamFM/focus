@@ -1,3 +1,5 @@
+
+
 <cfoutput>
 
 <cfif NOT arrayLen(rc.answers)>
@@ -10,26 +12,28 @@ No results found
 
 <section id="widget-grid">
 
-<div class="jarviswidget" id="widget-id-1">
+<div class="jarviswidget" id="widget-id-0">
+
 									    <header>
 									        <h2>Search Results</h2>                           
 									    </header>
-									    
-									    <!-- widget div-->
+									    <!-- wrap div -->
 									    <div>
-									    	<!-- widget edit box -->
+									    
 									        <div class="jarviswidget-editbox">
 
 									        </div>
-									        <!-- end widget edit box -->
-
-									        <!-- content -->	            
             
 									        <div class="inner-spacer"> 
 	
 
-<table class="table table-bordered table-striped responsive" id="s-table">
-				
+												<table class="table table-striped table-bordered responsive" id="dtable">
+													<thead>
+														<tr>
+															<th>View</th>
+															<th>Respondent</th>
+														</tr>
+													</thead>
 														<tbody>
 
 

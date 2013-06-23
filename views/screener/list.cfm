@@ -6,7 +6,7 @@
 
 <cfloop array="#rc.screeners#" index="screener">
 
-<a href="/v/#screener.screenerUUID#" class="btn btn-success">#screener.screenerName#</a> <a href="/screener/edit/#screener.screenerUUID#" class="btn">edit</a>
+<a href="/v/#screener.screenerUUID#" class="btn btn-success">View</a> <a href="/screener/edit/#screener.screenerUUID#" class="btn">edit</a> #screener.screenerName#
 <hr />
 
 </cfloop>
