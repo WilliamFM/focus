@@ -1,5 +1,9 @@
 <cfoutput>
 
+#rc.screener.screenerName#
+
+<hr />
+
 <form class="form-horizontal" method="POST" action="/screener/saveresponse">
 
 <cfloop array="#rc.questions#" index="question">
@@ -67,7 +71,7 @@
 
 
 <div class="span6">
-      <input type="text" name="question#question.questionUUID#" id="question#question.questionUUID#" placeholder="Question Label">
+      <input type="text" name="question#question.questionUUID#" id="question#question.questionUUID#" placeholder="">
 </div>
 
 </cfif>
@@ -78,7 +82,7 @@
 
 
 <div class="row-fluid question">
-      <button type="submit" class="btn btn-success">Submit Response</button>
+      <button type="submit" class="btn btn-success" id="submit">Submit</button>
 </div>
 
 

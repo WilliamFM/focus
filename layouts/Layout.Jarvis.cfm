@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     
-    <title>FocusJR</title>
+    <title>FocusJr</title>
     <meta name="description" content="">
     <meta name="author" content="">
     
@@ -101,7 +101,7 @@
 				<div class="contained">
 					
 					<!-- theme name -->
-					<a href="/" id="logo"><h1> FocusJR <span class="hidden-phone">- Admin</span> </h1></a>
+					<a href="/" id="logo"><h1> FocusJr <span class="hidden-phone">- Admin</span> </h1></a>
 					<!-- end theme name -->
 																		
 					<!-- span4 -->

@@ -4589,7 +4589,9 @@
 	}
 
 
-
+	#questionOptions{
+		display: none;
+	}
 	
 	.questionOption {
 		margin-top: 10px;
@@ -4606,5 +4608,19 @@
 	
 	.question {
 		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	#accordion-menu-js li ul {
+		display: none;
+	}
+	
+	.radio input[type="radio"], .checkbox input[type="checkbox"] {
+		float: left;
+		margin-right: 20px;
+		margin-left: 0px;
+	}
+	
+	#submit {
 		margin-bottom: 10px;
 	}

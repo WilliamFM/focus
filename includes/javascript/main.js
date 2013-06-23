@@ -56,12 +56,24 @@ jQuery(document).ready(function(){
 		var newOption = $('<div>');
 		newOption.addClass('questionOption');
 		
-		newOption.html('<input type="text" name="option'+optionCount+'" class="option">'+'<input type="text" name="optionLabel'+optionCount+'" class="optionLabel">');
+		newOption.html('<input type="text" name="option'+optionCount+'" class="option" placeholder="value for option">'+'<input type="text" name="optionLabel'+optionCount+'" class="optionLabel" placeholder="label for option">');
 		
 		$("#options").append(newOption);
 		
 		$("#optionCount").val(optionCount)
 		
+		});
+	
+	$("#searchForm").bind("keyup", function(event){
+		
+			if (event.which == 13 || event.keyCode == 13) {
+			
+				event.preventDefault();
+			
+				$("#searchForm").submit();
+			
+			}
+				
 		});
 	
 });

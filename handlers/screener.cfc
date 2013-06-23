@@ -22,7 +22,7 @@ component{
         
     	rc.questions = ORMExecuteQuery("from question where screenerID = '#rc.screener.getScreenerID()#'");   
     
-        event.setLayout('Layout.Jarvis');
+        event.setLayout('Layout.Home');
         event.setView('screener/view');
 
     }
@@ -31,7 +31,7 @@ component{
     
     	rc.screener = ORMExecuteQuery("from screener where screenerUUID = '#rc.screenerID#'", true);          
     
-        event.setLayout('Layout.Jarvis');
+        event.setLayout('Layout.Home');
         event.setView('screener/viewresponses');
 
     }
@@ -67,6 +67,7 @@ component{
         rc.newQuestion.setQuestionUUID(createUUID());    
         rc.newQuestion.setScreener(rc.screener);
         rc.newQuestion.setQuestionType(rc.questionType);
+        rc.newQuestion.setMaster(rc.master);                        
         
         if (listFindNoCase('select,radio,checkbox', rc.questionType)) {
         
@@ -108,6 +109,9 @@ component{
 	function saveresponse(event,rc,prc){
     
     	rc.screener = ORMExecuteQuery("from screener where screenerUUID = '#rc.screenerID#'", true);   
+
+		rc.newRespondent = EntityNew('respondent');
+        rc.newRespondent.setRespondentUUID(createUUID());
         
 		rc.newResponse = EntityNew('response');
         rc.newResponse.setScreener(rc.screener);
@@ -127,12 +131,22 @@ component{
             rc.newAnswer.setAnswerValue(rc[rc.fieldName]);
             rc.newAnswer.setResponse(rc.newResponse);
             rc.newResponse.addAnswer(rc.newAnswer);
+            
+            if (rc.question.master is 'true') {
+                rc.newRespondent.addAnswer(rc.newAnswer);
+                rc.newAnswer.setRespondent(rc.newRespondent);
+            }
+            
             EntitySave(rc.newAnswer);
         
         }
 
         }
        
+        rc.newResponse.setRespondent(rc.newRespondent);
+        rc.newRespondent.addResponse(rc.newResponse);
+       
+        EntitySave(rc.newRespondent); 
         EntitySave(rc.newResponse); 
         EntitySave(rc.screener);               
             

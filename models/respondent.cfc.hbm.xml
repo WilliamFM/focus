@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping><!--
+source:C:\server\sites\focusjr.com\ROOT\models\respondent.cfc
+compilation-time:{ts '2013-06-23 04:07:41'}
+--><class entity-name="respondent" lazy="true" node="models.respondent" table="respondents"><id name="respondentID" type="integer"><column name="respondentID"/><generator class="native"/></id><property name="respondentType" type="string"><column name="respondentType"/></property><property name="respondentUUID" type="string"><column name="respondentUUID"/></property><bag inverse="true" lazy="true" name="answers"><key column="respondentID"/><one-to-many entity-name="answer"/></bag><bag inverse="true" lazy="true" name="responses"><key column="respondentID"/><one-to-many entity-name="response"/></bag></class></hibernate-mapping>

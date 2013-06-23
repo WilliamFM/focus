@@ -22,7 +22,7 @@
 
     <div class="hRow">
 <!---	<a href="##newUserForm" role="button" class="btn btn-small" data-toggle="modal">New User</a>--->
-    	<a href="/admin/users/manage/new" class="btn btn-small">New User</a>
+    	<a href="/admin/users/manage/new" class="btn btn-small btn-info">New User</a>
     </div>
     
     <hr>
@@ -32,7 +32,7 @@
                 <cfloop array="#rc.users#" index="user">
                 
                 <div class="hRow">
-                <a href="/admin/users/manage/edit/#user.userID#" class="btn btn-small"><i class="icon-cog"></i></a> <a href="/admin/users/manage/edit/#user.userID#">#user.email#</a>
+                <a href="/admin/users/manage/edit/#user.userID#" class="btn btn-small btn-info"><i class="icon-cog"></i></a> <a href="/admin/users/manage/edit/#user.userID#">#user.email#</a>
                 </div>
                 
                 </cfloop>

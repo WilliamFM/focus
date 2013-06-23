@@ -26,7 +26,19 @@ Screener: <strong>#rc.screener.screenerName#</strong>
     </div>
   </div>
   
-  <div class="control-group" id="questionOptions" name=">
+  <div class="control-group">
+    <label class="control-label" for="questionType">Is this a master question?</label>
+    <div class="controls">
+		<label class="radio">
+        <input type="radio" value="false" name="master" id="master" checked="checked"> No<br  />
+        </label>
+		<label class="radio">
+        <input type="radio" value="true" name="master" id="master"> Yes<br  />
+		</label>
+    </div>
+  </div> 
+  
+  <div class="control-group" id="questionOptions">
     <label class="control-label" for="questionType">Options</label>
     <div class="controls">
     

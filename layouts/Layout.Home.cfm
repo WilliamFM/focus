@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     
-    <title>FocusJR</title>
+    <title>FocusJr</title>
     <meta name="description" content="">
     <meta name="author" content="">
     
@@ -101,7 +101,7 @@
 				<div class="contained">
 					
 					<!-- theme name -->
-					<a href="/" id="logo"><h1> FocusJR <span class="hidden-phone">- Admin</span> </h1></a>
+					<a href="/" id="logo"><h1> FocusJr <span class="hidden-phone">- Admin</span> </h1></a>
 					<!-- end theme name -->
 																		
 					<!-- span4 -->
@@ -238,8 +238,10 @@
 					
 					<!-- search box -->
 					<div class="main-search">
-						<label for="main-search"><i class="icon-search"></i></label>
-	                    <input id="main-search" type="text" placeholder="Search...">
+						<label for="main-semain-searcharch"><i class="icon-search"></i></label>
+						<form action="/search/master" id="searchForm" method="POST">
+	                    <input id="main-search" type="text" name="searchTerm" placeholder="Search...">
+						</form>
                 	</div>
 					<div class="divider"></div>
 					<!-- end search box -->
@@ -256,14 +258,14 @@
 					<!-- end aside item: Mini profile -->
 
 					<!-- aside item: Menu -->
-					<div class="sidebar-nav-fixed">
+					<div class="sidebar-nav-fixed">						
 						
 						<ul class="menu" id="accordion-menu-js">
-							<li class="current">
+							<li class="<cfif event.getCurrentEvent() is 'General.index'>current</cfif>">
 								<a href="javascript:void(0)"><i class="icon-off"></i>Dashboard <span class="badge">2</span></a>
 								<ul>
 									<li>
-										<a href="/" class="expanded">Home</a>
+										<a href="/" class="<cfif event.getCurrentEvent() is 'General.index'>expanded</cfif>">Home</a>
 									</li>
 									<li>
 										<a href="/logout" class="logout-js" data-rel="/logout">Logout</a>
@@ -273,19 +275,19 @@
 							<li class="">
 								<a href="#"><i class="icon-envelope"></i>Inbox</a>
 							</li>
-							<li class="">
-								<a href="javascript:void(0)"><i class="icon-check"></i>Screeners<span class="badge">231</span></a>
+							<li class="<cfif event.getCurrentHandler() is 'screener'>current</cfif>">
+								<a href="javascript:void(0)"><i class="icon-check"></i>Screeners<span class="badge">231</span></a>							
 								<ul>
 									<li>
-										<a href="/screener/list">List All</a>
+										<a href="/screener/list" class="<cfif event.getCurrentHandler() is 'screener'>expanded</cfif>">List All</a>
 									</li>
 								</ul>
 							</li>
-							<li class="">
+							<li class="<cfif event.getCurrentEvent() is 'admin.users'>current</cfif>">
 								<a href="javascript:void(0)"><i class="icon-user"></i>Users<span class="badge">1</span></a>
 								<ul>
 									<li>
-										<a href="/admin/users/manage">Manage</a>
+										<a href="/admin/users/manage" class="<cfif event.getCurrentEvent() is 'admin.users'>expanded</cfif>">Manage</a>
 									</li>
 									<li>
 										<a href="/admin/users/manage/new">Add New</a>
@@ -470,6 +472,7 @@
     <script>window.jQuery || document.write('<script src="/includes/jarvis/js/libs/jquery.min.js"><\/script>')</script>
     	<!-- OPTIONAL: Use this migrate script for plugins that are not supported by jquery 1.9+ -->
 		<!-- DISABLED <script src="/includes/jarvis/js/libs/jquery.migrate-1.0.0.min.js"></script> -->
+		
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
     <script>window.jQuery.ui || document.write('<script src="/includes/jarvis/js/libs/jquery.ui.min.js"><\/script>')</script>
     
