@@ -4624,3 +4624,7 @@
 	#submit {
 		margin-bottom: 10px;
 	}
+	
+	.screenerLink {
+		display: none;
+	}

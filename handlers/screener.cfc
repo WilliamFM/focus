@@ -22,7 +22,7 @@ component{
         
     	rc.questions = ORMExecuteQuery("from question where screenerID = '#rc.screener.getScreenerID()#'");   
     
-        event.setLayout('Layout.Home');
+        event.setLayout('Layout.Screener');
         event.setView('screener/view');
 
     }

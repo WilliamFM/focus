@@ -262,7 +262,7 @@
 						
 						<ul class="menu" id="accordion-menu-js">
 							<li class="<cfif event.getCurrentEvent() is 'General.index'>current</cfif>">
-								<a href="javascript:void(0)"><i class="icon-off"></i>Dashboard <span class="badge">2</span></a>
+								<a href="javascript:void(0)"><i class="icon-off"></i>Dashboard</a>
 								<ul>
 									<li>
 										<a href="/" class="<cfif event.getCurrentEvent() is 'General.index'>expanded</cfif>">Home</a>
@@ -276,7 +276,7 @@
 								<a href="#"><i class="icon-envelope"></i>Inbox</a>
 							</li>
 							<li class="<cfif event.getCurrentHandler() is 'screener'>current</cfif>">
-								<a href="javascript:void(0)"><i class="icon-check"></i>Screeners<span class="badge">231</span></a>							
+								<a href="javascript:void(0)"><i class="icon-check"></i>Screeners<span class="badge"><cfoutput>#rc.screenerCount#</cfoutput></span></a>							
 								<ul>
 									<li>
 										<a href="/screener/list" class="<cfif event.getCurrentHandler() is 'screener'>expanded</cfif>">List All</a>
@@ -284,7 +284,7 @@
 								</ul>
 							</li>
 							<li class="<cfif event.getCurrentEvent() is 'admin.users'>current</cfif>">
-								<a href="javascript:void(0)"><i class="icon-user"></i>Users<span class="badge">1</span></a>
+								<a href="javascript:void(0)"><i class="icon-user"></i>Users<span class="badge"><cfoutput>#rc.userCount#</cfoutput></span></a>
 								<ul>
 									<li>
 										<a href="/admin/users/manage" class="<cfif event.getCurrentEvent() is 'admin.users'>expanded</cfif>">Manage</a>

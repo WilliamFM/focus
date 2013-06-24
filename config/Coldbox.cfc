@@ -214,6 +214,9 @@ logBoxConfig = "coldbox.system.cache.config.LogBox",
 			//SES
 			{class="interceptors.SES",
 			 properties={}
+			},
+			{class="interceptors.counts",
+			 properties={}
 			}
 		];
 		

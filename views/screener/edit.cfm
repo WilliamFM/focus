@@ -8,9 +8,14 @@
 
 <a href="/screener/viewresponses/#rc.screenerID#" class="btn btn-success"><i class="cus-book-open"></i> View Responses</a>
 
-<a href="/screener/view/#rc.screenerID#" class="btn btn-success"><i class="cus-application-form"></i> View</a>
+<a href="/screener/v/#rc.screenerID#" class="btn btn-success" target="screener_#rc.screenerID#"><i class="cus-application-form"></i> View</a>
 
+<a href="##/screener/v/#rc.screenerID#" class="btn btn-success shareScreener"><i class="cus-arrow-divide"></i> Share</a>
+
+<div class="screenerLink">
 <br />
+<input type="text" class="span6" value="http://#cgi.HTTP_HOST#/v/#rc.screenerID#" />
+</div>
 
 <hr />
 
