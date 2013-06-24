@@ -7,7 +7,8 @@ component extends="coldbox.system.Interceptor"{
         
         rc.screenerCount = new Query();
         rc.screenerCount.setSQL("select screenerID from screeners");
-        rc.screenerCount = rc.screenerCount.execute().result.recordcount;
+        
+        rc.screenerCount = rc.screenerCount.execute().result.recordcount;       
         
         rc.userCount = new Query();
         rc.userCount.setSQL("select userID from users");

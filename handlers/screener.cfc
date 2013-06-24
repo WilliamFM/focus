@@ -67,7 +67,9 @@ component{
         rc.newQuestion.setQuestionUUID(createUUID());    
         rc.newQuestion.setScreener(rc.screener);
         rc.newQuestion.setQuestionType(rc.questionType);
+        if (isDefined("rc.master") and rc.master is 'true') {
         rc.newQuestion.setMaster(rc.master);                        
+        }
         
         if (listFindNoCase('select,radio,checkbox', rc.questionType)) {
         

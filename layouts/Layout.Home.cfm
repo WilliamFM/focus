@@ -322,7 +322,7 @@
 					<div class="mini-inbox">
 						<div class="alert inbox">
 							<button type="button" class="close" data-dismiss="alert">
-								×
+								&times;
 							</button>
 							
 							<a href="javascript:void(0)">
@@ -334,7 +334,7 @@
 						<!-- inbox message 2-->
 						<div class="alert inbox">
 							<button type="button" class="close" data-dismiss="alert">
-								×
+								&times;
 							</button>
 							<a href="javascript:void(0)">
 								<img src="/includes/jarvis/img/email-unread.png" width="22" height="18" alt="important mail" />
@@ -548,7 +548,7 @@
 	</script>
 
     <!-- REQUIRED: iButton -->
-    <script src="/includes/jarvis/js/include/jquery.ibutton.min.js"></script>
+    
 	
 	<!-- REQUIRED: Justgage animated charts -->
 	<script src="/includes/jarvis/js/include/raphael.2.1.0.min.js"></script>
@@ -626,6 +626,8 @@
     <!-- DISABLED <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script> -->
     <!-- DISABLED <script type='text/javascript' src='https://www.google.com/jsapi'></script>-->
     <!-- DISABLED <script src="/includes/jarvis/js/include/adv_charts/geochart.js"></script> -->
+	
+<script src="/includes/jarvis/js/include/jquery.ibutton.min.js"></script>
 	
 	<script src="/includes/javascript/main.js"></script>
     

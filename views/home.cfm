@@ -18,7 +18,7 @@
 					<h1 id="page-header">Dashboard</h1>	
 
 					<div class="alert adjusted alert-info">
-						<button class="close" data-dismiss="alert">×</button>
+						<button class="close" data-dismiss="alert">&times;</button>
 						<i class="cus-exclamation"></i>
 						<strong>Welcome to FocusJr Admin</strong>
 					</div>

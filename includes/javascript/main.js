@@ -39,12 +39,16 @@ jQuery(document).ready(function(){
 	
 	$("#questionOptions").hide();
 	
-	$("#questionType").bind("change", function(){
-		
+	$(".questionTypeOption").bind("click", function(){
+
 		if ($(this).val() == 'select' | $(this).val() == 'checkbox' | $(this).val() == 'radio') {
 		
 			$("#questionOptions").show();
 		
+		} else {
+			
+			$("#questionOptions").hide();
+			
 		}
 		
 		});
@@ -61,6 +65,35 @@ jQuery(document).ready(function(){
 		$("#options").append(newOption);
 		
 		$("#optionCount").val(optionCount)
+		
+		});	
+	
+	$(".questionTypeRequirement").bind("click", function(){
+
+		if ($(this).val() == 'select' | $(this).val() == 'checkbox' | $(this).val() == 'radio') {
+		
+			$("#questionRequirements").show();
+		
+		} else {
+			
+			$("#questionRequirements").hide();
+			
+		}
+		
+		});
+		
+	$("#addRequirement").bind("click", function(){
+		
+		var requirementCount = parseInt($("#requirementCount").val())+1;	
+		
+		var newRequirement = $('<div>');
+		newRequirement.addClass('questionRequirement');
+		
+		newRequirement.html('<select name="requirement'+requirementCount+'" class="requirement"><option value="required">Required</option><option value="numeric">Numeric</option><option value="equation">Equation</option></select>'+'<input type="text" name="requirementOption'+requirementCount+'" class="requirementOption" placeholder="configuration for requirement">'+'<input type="text" name="requirementLabel'+requirementCount+'" class="requirementLabel" placeholder="label for requirement">');
+		
+		$("#requirements").append(newRequirement);
+		
+		$("#requirementCount").val(requirementCount)
 		
 		});
 	
@@ -79,6 +112,10 @@ jQuery(document).ready(function(){
 	$(".shareScreener").bind("click", function(){
 		$(this).toggleClass('btn-success');
 		$(".screenerLink").toggle();
+	});
+	
+	$(".questionTypeOption").bind("click", function(){
+		$("#questionType").val($(this).val());
 	});
 	
 });

@@ -1,12 +1,12 @@
 <cfoutput>
 
-<a href="/screener/new" class="btn btn-success"><i class="icon icon-plus icon-white"></i> Create New Screener</a>
+<a href="/screener/new" class="btn btn-info"><i class="cus-page-white-database"></i> Create New Screener</a>
 
 <hr />
 
 <cfloop array="#rc.screeners#" index="screener">
 
-<a href="/v/#screener.screenerUUID#" class="btn btn-success">View</a> <a href="/screener/edit/#screener.screenerUUID#" class="btn">edit</a> #screener.screenerName#
+<a href="/v/#screener.screenerUUID#" class="btn btn"><i class="cus-magnifier"></i> View</a> <a href="/screener/edit/#screener.screenerUUID#" class="btn"><i class="cus-page-white-edit"></i> edit</a> #screener.screenerName#
 <hr />
 
 </cfloop>
