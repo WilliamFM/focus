@@ -4,18 +4,20 @@
 
 <hr />
 
-<a href="/screener/newquestion/#rc.screenerID#" class="btn btn-success"><i class="cus-add"></i> Add Question</a>
+<a href="/screener/newquestion/#rc.screenerID#" class="btn"><i class="cus-add"></i> Add Question</a>
 
-<a href="/screener/viewresponses/#rc.screenerID#" class="btn btn-success"><i class="cus-book-open"></i> View Responses</a>
+<a href="/screener/viewresponses/#rc.screenerID#" class="btn"><i class="cus-book-open"></i> View Responses</a>
 
-<a href="/screener/v/#rc.screenerID#" class="btn btn-success" target="screener_#rc.screenerID#"><i class="cus-application-form"></i> View</a>
+<a href="/screener/v/#rc.screenerID#" class="btn" target="screener_#rc.screenerID#"><i class="cus-application-form"></i> View</a>
 
-<a href="##/screener/v/#rc.screenerID#" class="btn btn-success shareScreener"><i class="cus-arrow-divide"></i> Share</a>
+<span class="form-horizontal">
+<a href="##/screener/v/#rc.screenerID#" class="btn shareScreener"><i class="cus-arrow-divide"></i> Share</a>
 
-<div class="screenerLink">
-<br />
-<input type="text" class="span6" value="http://#cgi.HTTP_HOST#/v/#rc.screenerID#" />
-</div>
+<span class="screenerLink">
+
+<input type="text" class="span5" value="http://#cgi.HTTP_HOST#/v/#rc.screenerID#" />
+</span>
+</span>
 
 <hr />
 

@@ -77,8 +77,8 @@ jQuery(document).ready(function(){
 		});
 	
 	$(".shareScreener").bind("click", function(){
-		$(this).hide();
-		$(".screenerLink").show();
+		$(this).toggleClass('btn-success');
+		$(".screenerLink").toggle();
 	});
 	
 });
