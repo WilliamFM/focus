@@ -90,6 +90,7 @@
         
         <cfset event.setLayout("Layout.Main")>
         
+        <!---
         <cfhttp url="http://localhost:5985/config/rackspace" result="local.rackspace"></cfhttp>
         <cfoutput>
                 <cfset rc.key = #deserializeJSON(local.rackspace.FileContent).key#>
@@ -145,6 +146,7 @@
 </cfhttp>
 
 </cfoutput>
+--->
 
         
         <cfif isDefined("session.User")>

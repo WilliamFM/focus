@@ -54,7 +54,7 @@ if ($('#chartdiv').length) {
 	AmCharts.ready(function() {
 		// SERIAL CHART
 		chart = new AmCharts.AmSerialChart();
-		chart.pathToImages = "img/amchart/";
+		chart.pathToImages = "/includes/jarvis/img/amchart/";
 		chart.dataProvider = chartData;
 		chart.categoryField = "date";
 		chart.marginTop = 0;
